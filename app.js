@@ -11,7 +11,7 @@ let port = process.env.PORT || 3000;
 
 mongoose.set('useUnifiedTopology', true);
 mongoose.set('useFindAndModify', false); //Fixes error FindAnd... Methods
-mongoose.connect("mongodb+srv://YelpUser:Yelp.p@ss@yelpcamp-mfxfp.mongodb.net/yelp_camp?retryWrites=true&w=majority", {useNewUrlParser: true})
+mongoose.connect("mongodb://localhost/yelp_camp", {useNewUrlParser: true})
     .catch(err => {
         console.error(err)
     });
