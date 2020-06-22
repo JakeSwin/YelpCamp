@@ -7,13 +7,15 @@ const LocalStrategy = require("passport-local");
 const flash = require("connect-flash");
 //let seeds = require("./seeds");
 
+let port = process.env.PORT || 3000;
+
 mongoose.set('useUnifiedTopology', true);
 mongoose.set('useFindAndModify', false); //Fixes error FindAnd... Methods
 mongoose.connect("mongodb+srv://YelpUser:Yelp.p@ss@yelpcamp-mfxfp.mongodb.net/yelp_camp?retryWrites=true&w=majority", {useNewUrlParser: true})
     .catch(err => {
         console.error(err)
     });
-    
+
 app.set("view engine","ejs");
 app.use(express.static(__dirname + "/public"));
 app.use(express.urlencoded({ extended: true }));
@@ -53,6 +55,6 @@ app.use("/campgrounds/:id/comments", commentRoutes);
 app.use("/campgrounds", campgroundRoutes);
 app.use(indexRoutes);
 
-app.listen(3000, () => {
-    console.log("Server is listening on port 3000")
+app.listen(port, () => {
+    console.log(`Server is listening on port ${port}`)
 });
